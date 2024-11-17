@@ -1,2 +1,2 @@
 # NER-Model
-A natural language processing model aim for extracting name of persons, entities, organizations and locations.
+A machine learning model aim for extracting name of people, organizations and locations.
