@@ -1,7 +1,7 @@
 # Named Entity Recognition (NER) Model Pipeline
 
 ## Overview
-This pipeline is designed to identify and categorize named entities in text using a custom NER model. It aims to extract entities such as people (PER), organizations (ORG), and locations (LOC), and includes functionality for training, evaluation, and error analysis.
+This pipeline is designed to identify and categorize named entities in text using a custom NER model. It aims to extract entities such as people (PER), organizations (ORG), and locations (LOC).
 
 ---
 
