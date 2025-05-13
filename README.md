@@ -72,8 +72,6 @@ The pipeline exhibited two main types of validation errors:
 
 ## Limitations
 - The pipeline identifies extra “organizations”. For example, I didn’t highlight “EV” which stands for “Electric Vehicle” (left). But the pipeline recognizes it (right).
-![image](https://github.com/user-attachments/assets/6a6afc41-ba74-4bac-9f94-fbc3d9deac69)
-
 - Not all interest groups are linked. For instance, “Alliance for Automotive Innovation” is not linked because it is missing from WikiData, which SpaCy checks for Entity Linking.
 - Our pipeline only supports English. Adaptation for multiple languages would be possible using more SpaCy features.
 - Manual validation of outputs introduces potential for human error, impacting the reliability of descriptive statistics.
