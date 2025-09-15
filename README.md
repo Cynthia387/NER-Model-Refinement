@@ -88,4 +88,64 @@ The pipeline exhibited two main types of validation errors:
 ## Contributors
 - [Xiaoran Zhou]
 
+# Pipeline Refinement: Handling leading "the" in entities
+
+## Overview
+
+This project refines the existing NER + entity linking pipeline (originally developed by Xiaoran Zhou using spaCy and the spacy-entity-linker package).
+Two contributions were made:
+
+1. **Small Dataset Validation**
+   - File: revise_check.ipynb
+   - Tested whether removing the leading article “The” from organization names improves linking accuracy, using a dataset of 192 unlinked entities (entities_duplicates_removed0709.csv).
+
+2. **Full Pipeline Integration**
+   - File: spacy-entity-linker(revised)_copy.ipynb
+   - Added a new cell to the original large dataset pipeline (emission_rule_news_steven.csv) that re-runs linking on previously unlinked entities after stripping leading “The”.
+   The baseline pipeline from Xiaoran Zhou was preserved.
+
+---
+
+## Pipeline Structure
+
+1. NER step: Extract organization entities (ORG) from article text using spaCy.
+
+2. Entity linking step: Pass recognized entities into spacy-entity-linker, which matches them to Wikidata entries.
+
+3. Refinement step (new):
+   Case-insensitive removal of leading “The”.
+   Retry linking only for rows where Entity == None.
+   Save results in a new column (Entity_TheFix) alongside baseline output.
+
+---
+
+## Results
+
+1. Small Dataset (192 unlinked entities)
+
+Originally unlinked: 192
+Linked after “The” removal: 42
+Still unlinked: 150
+
+~21.9% of previously unlinked entities were recovered.
+
+2. Full Dataset (~18k mentions)
+
+Baseline unlinked: 17,970
+After “The” fix: 13,483
+Newly linked: 4,487
+
+~25% recovery rate among unlinked entities.
+
+---
+
+## Notes
+
+- Refinement applies only at the entity linking stage, not during NER.
+- Future work will extend to handling abbreviations, encoding issues and so on (see technical report).
+
+---
+
+## Contributor
+- [Xiuping Shen]
 
